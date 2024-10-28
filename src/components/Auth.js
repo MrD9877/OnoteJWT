@@ -58,7 +58,7 @@ function Auth() {
 
     const fechUserNotes = async () => {
         try {
-            const data = await fetch(`${process.env.API_KEY}/usernotes`, {
+            const data = await fetch(`https://onotesbackend-production.up.railway.app/usernotes`, {
                 credentials: 'include',
                 headers: {
                     'Accept': 'application/json',

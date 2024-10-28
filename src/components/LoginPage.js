@@ -39,7 +39,7 @@ export default function LoginPage() {
     }
     const onSubmit = async (data) => {
         try {
-            const checkUser = await fetch(`${process.env.API_KEY}/login`, {
+            const checkUser = await fetch(`https://onotesbackend-production.up.railway.app/login`, {
                 credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
