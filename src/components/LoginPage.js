@@ -39,7 +39,7 @@ export default function LoginPage() {
     }
     const onSubmit = async (data) => {
         try {
-            const checkUser = await fetch("http://localhost:3000/login", {
+            const checkUser = await fetch(`${process.env.API_KEY}/login`, {
                 credentials: 'include',
                 headers: {
                     'Accept': 'application/json',

@@ -46,7 +46,7 @@ export default function SigninPage() {
             setStyle({ color: "black" })
         }
         try {
-            const addNewUser = await fetch("http://localhost:3000/signin", {
+            const addNewUser = await fetch(`${process.env.API_KEY}/signin`, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
