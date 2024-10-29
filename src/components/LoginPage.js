@@ -48,15 +48,16 @@ export default function LoginPage() {
                 method: "POST",
                 body: JSON.stringify(data)
             })
-            if (checkUser.statusText === "Unauthorized") {
+            console.log(checkUser)
+            if (checkUser.status === 401) {
                 popTost("Envalid Username or password", false)
                 setStyle(redInputStyle)
                 return
             }
-            console.log(checkUser.statusText)
-            if (checkUser.statusText === "OK") {
+            console.log(checkUser)
+            if (checkUser.status === 200) {
                 popTost('You are now loged in', true)
-                navigateTOlogin("/home", 1000)
+                navigateTOlogin("/auth/home", 1000)
             }
         } catch (err) {
             popTost('Sorry server is down', false)

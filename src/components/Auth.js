@@ -26,7 +26,7 @@ function Auth() {
     const deleteFech = async (index) => {
         const deleteId = userNotes[index]._id
         try {
-            await fetch(`http://localhost:3000/usernotes`, {
+            await fetch(`https://onotesbackend-production.up.railway.app/usernotes`, {
                 method: "DELETE", credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
@@ -60,14 +60,13 @@ function Auth() {
         try {
             const data = await fetch(`https://onotesbackend-production.up.railway.app/usernotes`, {
                 credentials: 'include',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
+                method: "GET"
             });
+            console.log(data)
             const notes = await data.json()
             setUsernotes(notes)
-        } catch {
+        } catch (err) {
+            console.log(err)
             console.log("fail to get notes from server")
         }
     }
