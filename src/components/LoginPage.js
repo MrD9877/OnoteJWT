@@ -60,6 +60,7 @@ export default function LoginPage() {
                 navigateTOlogin("/auth/home", 1000)
             }
         } catch (err) {
+            console.log(err)
             popTost('Sorry server is down', false)
         }
     }

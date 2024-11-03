@@ -20,7 +20,7 @@ function App() {
     <>
 
       <Routes>
-        <Route path='/' element={
+        <Route path='/Onote' element={
           <>
             <Navbar />
             <Home />
