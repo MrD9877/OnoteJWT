@@ -40,7 +40,7 @@ export default function LoginPage() {
     const onSubmit = async (data) => {
         try {
             const checkUser = await fetch(`https://onotesbackend-production.up.railway.app/login`, {
-                credentials: 'include',
+                credentials: "same-origin",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
