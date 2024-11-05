@@ -11,12 +11,13 @@ export default function Tennisgame(props) {
     const [vectorY, setVetorY] = useState(true)
     const [gameStart, setGameStart] = useState(false)
     const [gameEnd, setGameEnd] = useState(false)
-    const [ballSpeed, setBallSpeed] = useState(1)
+    const [ballSpeed, setBallSpeed] = useState(0.4)
     const [canvas, setCanvas] = useState()
     const [ctx, setCtx] = useState()
     const [i, setI] = useState(2)
     const [score, setScore] = useState('00:00')
     const [playerVector, setPlayerVector] = useState(true)
+    const [touchPad, setTouchPad] = useState({})
     let gravity = 0.02
     let playerGvelocity = 2
 
@@ -65,6 +66,15 @@ export default function Tennisgame(props) {
                 })
             }
         }
+    }
+
+    const handleTouch = (e) => {
+        if (!gameStart) startGame()
+        setPlayerVector(false)
+    }
+    const handleEndTouch = () => {
+        setTouchPad({ background: "rgba(0,0,0,0)", color: "rgba(0,0,0,0)" })
+        setPlayerVector(true)
     }
 
     const handleKeys = (e) => {
@@ -157,6 +167,7 @@ export default function Tennisgame(props) {
         darwPlayer()
     }
     const startGame = () => {
+        setBallSpeed(0.5)
         setGameStart(true)
         setGameEnd(false)
         setI(2)
@@ -167,6 +178,7 @@ export default function Tennisgame(props) {
     }
 
     const restartGame = async () => {
+        setTouchPad({})
         stopGame()
         setGameEnd(true)
         clearCanvas()
@@ -215,16 +227,20 @@ export default function Tennisgame(props) {
     requestAnimationFrame(anime)
     return (
         <>
-            <div className='flex flex-col m-auto p-48 justify-center align-middle items-center' style={{ background: "#212121" }}>
-                {score} hello world
-                <div className='flex  justify-between w-2/5'>
-                    <div className='flex w-1/5 justify-evenly align-middle'>
+            <div className='flex flex-col m-auto p-48 justify-center align-middle items-center ' style={{ maxHeight: "78vh" }}>
+                <div className='text-white bg-slate-500 px-2 py-1 mb-5 border-black rounded w-32'>
+                    <span>
+                        Your best:    {score}
+                    </span>
+                </div>
+                <div className='flex justify-around'>
+                    <div className='flex justify-evenly align-middle mr-32'>
                         <ReactPopover
                             content={
                                 <p>Pause</p>
                             }
                         >
-                            <button onClick={stopGame} className='ho'>
+                            <button onClick={stopGame} className=''>
                                 <lord-icon
                                     src="https://cdn.lordicon.com/aklfruoc.json"
                                     trigger="hover"
@@ -248,10 +264,12 @@ export default function Tennisgame(props) {
                             </button>
                         </ReactPopover>
                     </div>
-                    <div> </div>
-                    <Timer gameStart={gameStart} setScore={setScore} gameEnd={gameEnd} />
+                    <div className='text-white m-auto flex align-middle' >
+                        <Timer gameStart={gameStart} setScore={setScore} gameEnd={gameEnd} />
+                    </div>
                 </div>
-                <canvas tabIndex="0" onClick={startGame} style={{ background: "#424242" }} onKeyDown={handleKeys} onKeyUp={() => setPlayerVector(true)} ref={c} height={props.canvasHeight} width={props.canvasWidth}> </canvas>
+                <canvas tabIndex="0" style={{ background: "#424242" }} onClick={startGame} onKeyDown={handleKeys} onKeyUp={() => setPlayerVector(true)} ref={c} height={props.canvasHeight} width={props.canvasWidth}> </canvas>
+                <div style={touchPad} onTouchStart={handleTouch} onTouchEnd={handleEndTouch} class="touchDisable rounded-full p-4 mt-4 bg-slate-100">Touch Here</div>
             </div>
         </>
     )

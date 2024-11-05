@@ -1,7 +1,7 @@
 import './App.css';
 import LoginPage from './components/LoginPage.js';
 import SigninPage from './components/SigninPage.js';
-import { Route, Routes, HashRouter } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Auth from './components/Auth.js';
 import PageNotFound from './components/PageNotFound.js';
 import ServerDown from './components/ServerDown.js';

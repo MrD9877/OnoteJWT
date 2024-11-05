@@ -34,6 +34,14 @@
   width: 40px;
 }
 
+@media (max-width: 600px) {
+  .hiddenForMobile {
+    display: none;
+  }
+
+  .gameChanges {}
+}
+
 /* // .classList.add("bg-red-50 border border-red-500 text-red-900 placeholder-red-700") */
 
 @keyframes App-logo-spin {
@@ -44,4 +52,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.touchDisable {
+  -webkit-touch-callout: none;
+  /* Safari */
+  -webkit-user-select: none;
+  /* Chrome */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
 }

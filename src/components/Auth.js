@@ -2,12 +2,11 @@ import React from 'react'
 import Footer from './Footer.js'
 import Navbar from './Navbar.js'
 import { useState, useEffect } from 'react';
-import { Route, Routes, HashRouter } from 'react-router-dom';
+import { Route, Routes, } from 'react-router-dom';
 import Contact from './Contact.js';
 import EditNotes from './EditNote.js';
 import NotesTable from './NotesTable.js';
 import Home from './Home.js';
-import { useNavigate } from 'react-router-dom';
 import ViewNotesPage from './ViewNotesPage.js';
 
 
@@ -15,13 +14,6 @@ function Auth() {
     const [userNotes, setUsernotes] = useState(null)
     const [content, setContent] = useState()
     const [topic, setTopic] = useState()
-
-    const navigate = useNavigate()
-    const navigateTOlogin = (url, delay) => {
-        setTimeout(() => {
-            navigate(url)
-        }, delay)
-    }
 
     const deleteFech = async (index) => {
         const deleteId = userNotes[index]._id

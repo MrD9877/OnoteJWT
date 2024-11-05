@@ -25,7 +25,7 @@ export default function Contact(props) {
   }
 
   const sendQuery = async (data) => {
-    await fetch(`https://onotesbackend-production.up.railway.app/contact/userQuery`, { method: "POST", body: JSON.stringify(data) }).catch(
+    await fetch(`https://onotesbackend-production.up.railway.app/contact/userQuery`, { method: "POST", credentials: "same-origin", body: JSON.stringify(data) }).catch(
       console.log('err')
     )
     popTost("Send ✔", true)
@@ -52,8 +52,8 @@ export default function Contact(props) {
         position="top-right"
         reverseOrder={false}
       />
-      <div className='flex maintainHeight' >
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" alt="" />
+      <div className='flex maintainHeight ' >
+        <img className='hiddenForMobile' src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" alt="" />
         <div className='flex flex-col justify-center m-auto'>
           <div className="mb-6">
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
