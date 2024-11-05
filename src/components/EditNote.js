@@ -30,7 +30,7 @@ export default function EditNote(props) {
 
     const savetoDB = async (data) => {
         try {
-            await fetch(`http://localhost:3000/addnotes`, {
+            await fetch(`https://onotesbackend-production.up.railway.app/addnotes`, {
                 credentials: 'include',
                 headers: {
                     'Accept': 'application/json',

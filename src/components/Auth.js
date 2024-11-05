@@ -19,7 +19,7 @@ function Auth() {
         const deleteId = userNotes[index]._id
         try {
             await fetch(`https://onotesbackend-production.up.railway.app/usernotes`, {
-                method: "DELETE", credentials: "same-origin",
+                method: "DELETE", credentials: "include",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -50,9 +50,7 @@ function Auth() {
 
     const fechUserNotes = async () => {
         try {
-            const data = await fetch(`https://onotesbackend-production.up.railway.app/usernotes`, {
-                credentials: "include",
-            });
+            const data = await fetch(`https://onotesbackend-production.up.railway.app/usernotes`, { credentials: 'include' });
             console.log(data)
             const notes = await data.json()
             setUsernotes(notes)
