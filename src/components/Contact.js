@@ -25,7 +25,7 @@ export default function Contact(props) {
   }
 
   const sendQuery = async (data) => {
-    await fetch(`https://onotesbackend-production.up.railway.app/contact/userQuery`, { method: "POST", credentials: "same-origin", body: JSON.stringify(data) }).catch(
+    await fetch(`https://onotesbackend-production.up.railway.app/contact/userQuery`, { method: "POST", body: JSON.stringify(data) }).catch(
       console.log('err')
     )
     popTost("Send ✔", true)
