@@ -52,10 +52,6 @@ function Auth() {
         try {
             const data = await fetch(`https://onotesbackend-production.up.railway.app/usernotes`, {
                 credentials: "same-origin",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
             });
             console.log(data)
             const notes = await data.json()
