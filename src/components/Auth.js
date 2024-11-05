@@ -51,7 +51,7 @@ function Auth() {
     const fechUserNotes = async () => {
         try {
             const data = await fetch(`https://onotesbackend-production.up.railway.app/usernotes`, {
-                credentials: "same-origin",
+                credentials: "include",
             });
             console.log(data)
             const notes = await data.json()
