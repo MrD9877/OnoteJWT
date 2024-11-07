@@ -30,7 +30,7 @@ export default function EditNote(props) {
 
     const savetoDB = async (data) => {
         try {
-            await fetch(`https://onotesbackend-production.up.railway.app/addnotes`, {
+            const res = await fetch(`http://localhost:3000/addnotes`, {
                 credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
@@ -39,6 +39,7 @@ export default function EditNote(props) {
                 method: "POST",
                 body: JSON.stringify(data)
             })
+            console.log(res)
             popTost("Article saved", true)
             props.fechUserNotes()
         } catch (err) {

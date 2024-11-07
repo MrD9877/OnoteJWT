@@ -8,6 +8,8 @@ import EditNotes from './EditNote.js';
 import NotesTable from './NotesTable.js';
 import Home from './Home.js';
 import ViewNotesPage from './ViewNotesPage.js';
+import RefreshToken from './RefreshToken.js';
+
 
 
 function Auth() {
@@ -18,7 +20,7 @@ function Auth() {
     const deleteFech = async (index) => {
         const deleteId = userNotes[index]._id
         try {
-            await fetch(`https://onotesbackend-production.up.railway.app/usernotes`, {
+            await fetch(`http://localhost:3000/usernotes`, {
                 method: "DELETE", credentials: "include",
                 headers: {
                     'Accept': 'application/json',
@@ -50,8 +52,7 @@ function Auth() {
 
     const fechUserNotes = async () => {
         try {
-            const data = await fetch(`https://onotesbackend-production.up.railway.app/usernotes`, { credentials: 'include' });
-            console.log(data)
+            const data = await fetch(`http://localhost:3000/usernotes`, { credentials: 'include' });
             const notes = await data.json()
             setUsernotes(notes)
         } catch (err) {
@@ -65,6 +66,7 @@ function Auth() {
 
     return (
         <>
+            <RefreshToken fechUserNotes={fechUserNotes} />
             <Navbar />
             <Routes>
                 <Route path='home' element={<Home />} />
